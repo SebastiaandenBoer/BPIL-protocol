@@ -1,0 +1,106 @@
+// All optional parameters have been indicated with a * before the parameter name.
+// Results will be filtered based on these optional parameters, where applicable.
+
+[
+    // Retrieve trucks ordered by geolocation of designated transport company
+    {
+        "method": "retrieveTrucksByLocation",
+        "input": {
+            // Requested location in latitude and longitude
+            "geoLocation": {
+                "latitude": 0.0,
+                "longitude": 0.0
+            },
+
+            // Kilometers around requested location
+            "radius": 5.0,
+
+            // Unique identifier of a transport company (optional)
+            "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+        },
+        "output": [
+            // Each object resembles a single truck within the requested radius around the requested geolocation
+            {
+                // Unique identifier of a truck
+                "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+
+                // Unique identifier of a transport company (optional)
+                "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+
+                // Requested location in latitude and longitude
+                "geoLocation": {
+                    "latitude": 0.0,
+                    "longitude": 0.0
+                },
+            },
+            "..."
+        ],
+    },
+
+    // Store destination for a certain truck (overwrite previous if truck already has a destination assigned)
+    {
+        "method": "assignTruckDestination",
+        "input": {
+            // Unique identifier of a truck
+            "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+
+            // Destination in latitude and longitude
+            "geoLocation": {
+                "latitude": 0.0,
+                "longitude": 0.0
+            },
+        },
+    },
+
+    // Update database with a recent geolocation of a specified truck
+    {
+        "method": "updateTruckLocation",
+        "input": {
+            // Unique identifier of a truck
+            "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+
+            // Destination in latitude and longitude
+            "geoLocation": {
+                "latitude": 0.0,
+                "longitude": 0.0
+            },
+        },
+    },
+
+    // Intermittent request of recent truck geolocation
+    {
+        "method": "requestTruckLocation",
+        "input": {
+            // Unique identifier of a truck
+            "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+        },
+        "output": 
+        {
+            // Requested location in latitude and longitude
+            "geoLocation": {
+                "latitude": 0.0,
+                "longitude": 0.0
+            },
+        },
+    },
+
+    // Estimate loading / staging times for a number of goods of specified weight and dimensions
+    {
+        "method": "estimateLoadingStatingTime",
+        "input": {
+            // A list of goods to be (un)loaded
+            "goods": [
+                {
+                    "weight": 2.1, // Weight of the item
+                    "height": 25.0, // Height of the item
+                    "width": 20.0, // Width of the item
+                    "length": 10.0, // Length of the item
+                },
+                "..."
+            ],
+        },
+        "output": {
+            "timespan": 19200000 // Estimated timespan in miliseconds (minutes times 60.000)
+        }
+    },
+]
