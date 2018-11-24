@@ -86,7 +86,7 @@
 
     // Estimate loading / staging times for a number of goods of specified weight and dimensions
     {
-        "method": "estimateLoadingStatingTime",
+        "method": "estimateLoadingStagingTime",
         "input": {
             // A list of goods to be (un)loaded
             "goods": [
