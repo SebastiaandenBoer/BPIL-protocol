@@ -15,16 +15,16 @@
             // Kilometers around requested location
             "radius": 5.0,
 
-            // Unique identifier of a transport company (optional)
+            // Unique identifier (UUID4) of a transport company (optional)
             "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
         },
         "output": [
             // Each object resembles a single truck within the requested radius around the requested geolocation
             {
-                // Unique identifier of a truck
+                // Unique identifier (UUID4) of a truck
                 "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
 
-                // Unique identifier of a transport company (optional)
+                // Unique identifier (UUID4) of a transport company (optional)
                 "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
 
                 // Requested location in latitude and longitude
@@ -41,7 +41,7 @@
     {
         "method": "assignTruckDestination",
         "input": {
-            // Unique identifier of a truck
+            // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
 
             // Destination in latitude and longitude
@@ -56,7 +56,7 @@
     {
         "method": "updateTruckLocation",
         "input": {
-            // Unique identifier of a truck
+            // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
 
             // Destination in latitude and longitude
@@ -71,7 +71,7 @@
     {
         "method": "requestTruckLocation",
         "input": {
-            // Unique identifier of a truck
+            // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
         },
         "output": 
