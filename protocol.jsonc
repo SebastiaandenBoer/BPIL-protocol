@@ -64,6 +64,9 @@
                 "latitude": 0.0,
                 "longitude": 0.0
             },
+
+            // UTC timestamp of location measurement (UNIX-time)
+            "dateTime": 1543238189,
         },
     },
 
@@ -81,6 +84,9 @@
                 "latitude": 0.0,
                 "longitude": 0.0
             },
+
+            // UTC timestamp of location measurement (UNIX-time)
+            "dateTime": 1543238189,
         },
     },
 
