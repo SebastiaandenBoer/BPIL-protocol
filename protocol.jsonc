@@ -148,7 +148,7 @@
             "timespan": 19200000
         }
     },
-    // Update database with a recent geolocation of a specified truck and trip
+    // Registers a transport company with a certain name
     {
         "method": "registerTransportCompany",
         "input": {
@@ -167,7 +167,7 @@
             },
         },
     },
-    // Update database with a recent geolocation of a specified truck and trip
+    // Updates the name of a registered transport company
     {
         "method": "updateTransportCompany",
         "input": {
