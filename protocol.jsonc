@@ -38,8 +38,8 @@
             "..."
         ],
     },
-    // Assign route for a certain truck (overwrite previous if truck
-    // already has a route assigned)
+    // Assign route for a certain truck 
+    // Returns an error if the truck already has a route assigned
     {
         "method": "assignTruckRoute",
         "input": {
@@ -56,8 +56,13 @@
         "output": {
             // Unique (UUID4) identifier of a trip
             "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // TODO: Provide estimated arrival time for latest trip
-        }
+            // UTC timestamp of arrival measurement (UNIX-time)
+            "estimatedArrival": 1543238189,
+        },
+        "error": {
+            "code": 500,
+            "status": "The truck is already en-route to its destination. Another destination could not be set.",
+        },
     },
     // Intermittent request of recent truck geolocation
     {
@@ -81,7 +86,8 @@
             },
             // UTC timestamp of location measurement (UNIX-time)
             "dateTime": 1543238189,
-            // TODO: Provide estimated arrival time for latest trip
+            // UTC timestamp of arrival measurement (UNIX-time)
+            "estimatedArrival": 1543238189,
         },
     },
     // Estimate loading time for a number of goods of specified
@@ -131,8 +137,9 @@
         "method": "registerTransportCompany",
         "input": {
             // Name of the registered transport company
-            "name": "Twents van der Kuil"
-            // TODO: Add trucks array (max 25) with default locations for trucks
+            "name": "Twents van der Kuil",
+            // Number of trucks to be registered for this company (max: 25)
+            "noTrucks": 25,
         },
         "output": {
             // Transport Company secret key (UUID)
@@ -144,7 +151,12 @@
                 // Registered name of the transport company
                 "name": "Twents van der Kuil",
             },
-            // TODO: Array of truck IDs
+            // List of trucks registered for this transport company
+            "truckIDs": [
+                // Unique (UUID4) identifier of a truck
+                "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                "..."
+            ],
         },
     },
 ]
