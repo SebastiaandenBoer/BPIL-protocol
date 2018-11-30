@@ -1,6 +1,4 @@
-// All optional parameters have been indicated with a * before the parameter name.
-// Results will be filtered based on these optional parameters, where applicable.
-
+// Results will be filtered based on optional parameters, where applicable.
 [
     // Retrieve trucks ordered by geolocation of designated transport company
     {
@@ -11,22 +9,26 @@
                 "latitude": 0.0,
                 "longitude": 0.0
             },
-
             // Kilometers around requested location
             "radius": 5.0,
-
             // Unique identifier (UUID4) of a transport company (optional)
             "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
         },
         "output": [
-            // Each object resembles a single truck within the requested radius around the requested geolocation
+            // Each object resembles a single truck within the requested
+            // radius around the requested geolocation
             {
                 // Unique identifier (UUID4) of a truck
                 "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-
-                // Unique identifier (UUID4) of a transport company (optional)
-                "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-
+                // Unique (UUID4) identifier of a trip
+                "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                // Representation of transport company
+                "tc": {
+                    // Unique identifier (UUID4) of a transport company
+                    "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                    // Name of a transport company
+                    "name": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                },
                 // Requested location in latitude and longitude
                 "geoLocation": {
                     "latitude": 0.0,
@@ -36,40 +38,50 @@
             "..."
         ],
     },
-
-    // Store destination for a certain truck (overwrite previous if truck already has a destination assigned)
+    // Assign route for a certain truck (overwrite previous if truck
+    // already has a route assigned)
     {
-        "method": "assignTruckDestination",
+        "method": "assignTruckRoute",
         "input": {
+            // Transport Company secret key (UUID)
+            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
             // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-
-            // Destination in latitude and longitude
-            "geoLocation": {
+            // Departure location in latitude and longitude
+            "departure": {
                 "latitude": 0.0,
-                "longitude": 0.0
+                "longitude": 0.0,
+            },
+            // Destination in latitude and longitude
+            "destination": {
+                "latitude": 0.0,
+                "longitude": 0.0,
             },
         },
+        "output": {
+            // Unique (UUID4) identifier of a trip
+            "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+        }
     },
-
-    // Update database with a recent geolocation of a specified truck
+    // Update database with a recent geolocation of a specified truck and trip
     {
         "method": "updateTruckLocation",
         "input": {
+            // Transport Company secret key (UUID)
+            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
             // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-
-            // Destination in latitude and longitude
+            // Unique (UUID4) identifier of a trip
+            "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+            // Location in latitude and longitude
             "geoLocation": {
                 "latitude": 0.0,
                 "longitude": 0.0
             },
-
             // UTC timestamp of location measurement (UNIX-time)
             "dateTime": 1543238189,
         },
     },
-
     // Intermittent request of recent truck geolocation
     {
         "method": "requestTruckLocation",
@@ -77,36 +89,103 @@
             // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
         },
-        "output": 
-        {
+        "output": {
             // Requested location in latitude and longitude
             "geoLocation": {
                 "latitude": 0.0,
                 "longitude": 0.0
             },
-
+            // Representation of transport company
+            "tc": {
+                // Unique identifier (UUID4) of a transport company
+                "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                // Name of a transport company
+                "name": "Twents van der Kuil",
+            },
             // UTC timestamp of location measurement (UNIX-time)
             "dateTime": 1543238189,
         },
     },
-
-    // Estimate loading / staging times for a number of goods of specified weight and dimensions
+    // Estimate loading time for a number of goods of specified
+    // weight and dimensions
     {
-        "method": "estimateLoadingStagingTime",
+        "method": "estimateLoadingTime",
         "input": {
             // A list of goods to be (un)loaded
             "goods": [
                 {
-                    "weight": 2.1, // Weight of the item
-                    "height": 25.0, // Height of the item
-                    "width": 20.0, // Width of the item
-                    "length": 10.0, // Length of the item
+                    "weight": 2.1, // Weight of the item (kg)
+                    "height": 25.0, // Height of the item (dm)
+                    "width": 20.0, // Width of the item (dm)
+                    "length": 10.0, // Length of the item (dm)
                 },
                 "..."
             ],
         },
         "output": {
-            "timespan": 19200000 // Estimated timespan in miliseconds (minutes times 60.000)
+            // Estimated timespan in miliseconds (minutes times 60000)
+            "timespan": 19200000
         }
+    },
+    // Estimate loading staging for a number of goods of specified
+    // weight and dimensions
+    {
+        "method": "estimateStagingTime",
+        "input": {
+            // A list of goods to be staged
+            "goods": [
+                {
+                    "weight": 2.1, // Weight of the item (kg)
+                    "height": 25.0, // Height of the item (dm)
+                    "width": 20.0, // Width of the item (dm)
+                    "length": 10.0, // Length of the item (dm)
+                },
+                "..."
+            ],
+        },
+        "output": {
+            // Estimated timespan in miliseconds (minutes times 60000)
+            "timespan": 19200000
+        }
+    },
+    // Update database with a recent geolocation of a specified truck and trip
+    {
+        "method": "registerTransportCompany",
+        "input": {
+            // Name of the registered transport company
+            "name": "Twents van der Kuil"
+        },
+        "output": {
+            // Transport Company secret key (UUID)
+            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+            // Representation of transport company
+            "tc": {
+                // Unique identifier (UUID4) of a transport company
+                "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                // Registered name of the transport company
+                "name": "Twents van der Kuil",
+            },
+        },
+    },
+    // Update database with a recent geolocation of a specified truck and trip
+    {
+        "method": "updateTransportCompany",
+        "input": {
+            // Transport Company secret key (UUID)
+            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+            // Unique identifier (UUID4) of the transport company
+            "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+            // New name of the transport company
+            "name": "Twents van der Kuil"
+        },
+        "output": {
+            // Representation of transport company
+            "tc": {
+                // Unique identifier (UUID4) of a transport company (unchanged)
+                "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+                // Updated name of the transport company
+                "name": "Twents van der Kuil",
+            },
+        },
     },
 ]
