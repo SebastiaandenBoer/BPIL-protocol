@@ -140,6 +140,11 @@
             "name": "Twents van der Kuil",
             // Number of trucks to be registered for this company (max: 25)
             "noTrucks": 25,
+            // Initial location of registered trucks
+            "geoLocation": {
+                "latitude": 0.0,
+                "longitude": 0.0
+            },
         },
         "output": {
             // Transport Company secret key (UUID)
