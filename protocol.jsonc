@@ -47,11 +47,6 @@
             "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
             // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // Departure location in latitude and longitude
-            "departure": {
-                "latitude": 0.0,
-                "longitude": 0.0,
-            },
             // Destination in latitude and longitude
             "destination": {
                 "latitude": 0.0,
@@ -61,26 +56,8 @@
         "output": {
             // Unique (UUID4) identifier of a trip
             "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
+            // TODO: Provide estimated arrival time for latest trip
         }
-    },
-    // Update database with a recent geolocation of a specified truck and trip
-    {
-        "method": "updateTruckLocation",
-        "input": {
-            // Transport Company secret key (UUID)
-            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // Unique (UUID4) identifier of a truck
-            "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // Unique (UUID4) identifier of a trip
-            "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // Location in latitude and longitude
-            "geoLocation": {
-                "latitude": 0.0,
-                "longitude": 0.0
-            },
-            // UTC timestamp of location measurement (UNIX-time)
-            "dateTime": 1543238189,
-        },
     },
     // Intermittent request of recent truck geolocation
     {
@@ -104,6 +81,7 @@
             },
             // UTC timestamp of location measurement (UNIX-time)
             "dateTime": 1543238189,
+            // TODO: Provide estimated arrival time for latest trip
         },
     },
     // Estimate loading time for a number of goods of specified
@@ -154,6 +132,7 @@
         "input": {
             // Name of the registered transport company
             "name": "Twents van der Kuil"
+            // TODO: Add trucks array (max 25) with default locations for trucks
         },
         "output": {
             // Transport Company secret key (UUID)
@@ -165,27 +144,7 @@
                 // Registered name of the transport company
                 "name": "Twents van der Kuil",
             },
-        },
-    },
-    // Updates the name of a registered transport company
-    {
-        "method": "updateTransportCompany",
-        "input": {
-            // Transport Company secret key (UUID)
-            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // Unique identifier (UUID4) of the transport company
-            "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-            // New name of the transport company
-            "name": "Twents van der Kuil"
-        },
-        "output": {
-            // Representation of transport company
-            "tc": {
-                // Unique identifier (UUID4) of a transport company (unchanged)
-                "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-                // Updated name of the transport company
-                "name": "Twents van der Kuil",
-            },
+            // TODO: Array of truck IDs
         },
     },
 ]
