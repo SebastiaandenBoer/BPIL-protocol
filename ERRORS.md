@@ -2,6 +2,18 @@
 
 *This document lists all possible error codes and messages for both Control Tower implementations. Although the exact descriptions of error codes can vary between different Control Towers, all error codes always describe the same phenomenon/ failure.*
 
+## Format of errors
+All errors are returned as part of the ```output``` object, and are represented as follows:
+
+```
+<output>
+    <errorCode>1001</errorCode>
+    <errorText>
+        <![CDATA[You do not have permission to manage this truck.]]>
+    </errorText>
+</output>
+```
+
 
 ## Application wide errors codes (1001 - 1099)
 **1001**: Invalid key. | You do not have permission to manage this truck.
