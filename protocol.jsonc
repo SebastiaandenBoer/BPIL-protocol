@@ -1,4 +1,5 @@
 // Results will be filtered based on optional parameters, where applicable.
+// If a method fails, you will receive an errorCode and errorText as output.
 [
     // Assign route for a certain truck 
     // Returns an error if the truck already has a route assigned
@@ -21,15 +22,13 @@
             // UTC timestamp of arrival measurement (UNIX-time)
             "estimatedArrival": 1543238189,
         },
-        "error": {
-            "code": 500,
-            "status": "Error message",
-        },
     },
     // Intermittent request of recent truck geolocation
     {
         "method": "requestTruckLocation",
         "input": {
+            // Transport Company secret key (UUID)
+            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
             // Unique (UUID4) identifier of a truck
             "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
         },
@@ -50,10 +49,6 @@
             "dateTime": 1543238189,
             // UTC timestamp of arrival measurement (UNIX-time)
             "estimatedArrival": 1543238189,
-        },
-        "error": {
-            "code": 500,
-            "status": "Error message",
         },
     },
     // Estimate loading time for a number of goods of specified
@@ -76,10 +71,6 @@
             // Estimated timespan in miliseconds (minutes times 60000)
             "timespan": 19200000
         },
-        "error": {
-            "code": 500,
-            "status": "Error message",
-        },
     },
     // Estimate loading staging for a number of goods of specified
     // weight and dimensions
@@ -100,10 +91,6 @@
         "output": {
             // Estimated timespan in miliseconds (minutes times 60000)
             "timespan": 19200000
-        },
-        "error": {
-            "code": 500,
-            "status": "Error message",
         },
     },
     // Registers a transport company with a certain name
@@ -136,10 +123,6 @@
                 "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
                 "..."
             ],
-        },
-        "error": {
-            "code": 500,
-            "status": "Error message",
         },
     },
 ]
