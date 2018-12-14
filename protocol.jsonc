@@ -1,43 +1,5 @@
 // Results will be filtered based on optional parameters, where applicable.
 [
-    // Retrieve trucks ordered by geolocation of designated transport company
-    {
-        "method": "retrieveTrucksByLocation",
-        "input": {
-            // Requested location in latitude and longitude
-            "geoLocation": {
-                "latitude": 0.0,
-                "longitude": 0.0
-            },
-            // Kilometers around requested location
-            "radius": 5.0,
-            // Unique identifier (UUID4) of a transport company (optional)
-            "tcID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-        },
-        "output": [
-            // Each object resembles a single truck within the requested
-            // radius around the requested geolocation
-            {
-                // Unique identifier (UUID4) of a truck
-                "truckID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-                // Unique (UUID4) identifier of a trip
-                "tripID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-                // Representation of transport company
-                "tc": {
-                    // Unique identifier (UUID4) of a transport company
-                    "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-                    // Name of a transport company
-                    "name": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
-                },
-                // Requested location in latitude and longitude
-                "geoLocation": {
-                    "latitude": 0.0,
-                    "longitude": 0.0
-                },
-            },
-            "..."
-        ],
-    },
     // Assign route for a certain truck 
     // Returns an error if the truck already has a route assigned
     {
@@ -147,10 +109,10 @@
             },
         },
         "output": {
-            // Transport Company secret key (UUID)
-            "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
             // Representation of transport company
             "tc": {
+                // Transport Company secret key (UUID)
+                "key": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
                 // Unique identifier (UUID4) of a transport company
                 "ID": "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
                 // Registered name of the transport company
