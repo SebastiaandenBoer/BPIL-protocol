@@ -106,6 +106,8 @@
                 "latitude": 0.0,
                 "longitude": 0.0
             },
+            // URL for notifyArrival method on Mendix
+            "callbackURL": "https://callback.url/yourmendixservice/notifyArrival"
         },
         "output": {
             // Representation of transport company
