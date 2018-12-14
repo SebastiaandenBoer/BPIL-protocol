@@ -23,7 +23,7 @@
         },
         "error": {
             "code": 500,
-            "status": "The truck is already en-route to its destination. Another destination could not be set.",
+            "status": "Error message",
         },
     },
     // Intermittent request of recent truck geolocation
@@ -51,6 +51,10 @@
             // UTC timestamp of arrival measurement (UNIX-time)
             "estimatedArrival": 1543238189,
         },
+        "error": {
+            "code": 500,
+            "status": "Error message",
+        },
     },
     // Estimate loading time for a number of goods of specified
     // weight and dimensions
@@ -71,7 +75,11 @@
         "output": {
             // Estimated timespan in miliseconds (minutes times 60000)
             "timespan": 19200000
-        }
+        },
+        "error": {
+            "code": 500,
+            "status": "Error message",
+        },
     },
     // Estimate loading staging for a number of goods of specified
     // weight and dimensions
@@ -92,7 +100,11 @@
         "output": {
             // Estimated timespan in miliseconds (minutes times 60000)
             "timespan": 19200000
-        }
+        },
+        "error": {
+            "code": 500,
+            "status": "Error message",
+        },
     },
     // Registers a transport company with a certain name
     {
@@ -124,6 +136,10 @@
                 "xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx",
                 "..."
             ],
+        },
+        "error": {
+            "code": 500,
+            "status": "Error message",
         },
     },
 ]
