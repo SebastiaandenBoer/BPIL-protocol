@@ -26,6 +26,8 @@ All errors are returned as part of the ```output``` object, and are represented 
 ## Error codes for assignTruckRoute (1101 - 1199)
 **1101**: The truck is already en-route to its destination. Another destination could not be set.
 
+**1102**: Unable to calculate route.
+
 
 ## Error codes for requestTruckLocation (1201 - 1299)
 **N/A**
