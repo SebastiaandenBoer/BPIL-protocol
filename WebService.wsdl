@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="WebService" targetNamespace="https://www.controltower.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="https://www.controltower.com/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://www.controltower.com/">
+      <xsd:element name="RegisterTransportCompany">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Input">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" type="xsd:string" />
+                  <xsd:element name="NoTrucks" type="xsd:long" />
+                  <xsd:element name="GeoLocation" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Latitude" type="xsd:decimal" />
+                        <xsd:element name="Longitude" type="xsd:decimal" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="CallbackURL" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterTransportCompanyResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Output">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ErrorCode" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorText" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="TC" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Key">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60" />
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="ID">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60" />
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Name" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="TruckID" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ID">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60" />
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EstimateStagingTime">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Input">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Goods" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Weight" type="xsd:decimal" />
+                        <xsd:element name="Height" type="xsd:decimal" />
+                        <xsd:element name="Width" type="xsd:decimal" />
+                        <xsd:element name="Length" type="xsd:decimal" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EstimateStagingTimeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Output">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="TimeSpan" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorCode" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorText" minOccurs="0" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EstimateLoadingTime">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Input">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Goods" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Weight" type="xsd:decimal" />
+                        <xsd:element name="Height" type="xsd:decimal" />
+                        <xsd:element name="Width" type="xsd:decimal" />
+                        <xsd:element name="Length" type="xsd:decimal" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EstimateLoadingTimeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Output">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="TimeSpan" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorCode" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorText" minOccurs="0" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssignTruckRoute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Input">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Key">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="60" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="TruckID">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="60" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="Destination" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Latitude" type="xsd:decimal" />
+                        <xsd:element name="Longitude" type="xsd:decimal" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssignTruckRouteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Output">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="TripID" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="60" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="EstimatedArrival" minOccurs="0" type="xsd:dateTime" />
+                  <xsd:element name="ErrorCode" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorText" minOccurs="0" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestTruckLocation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Input">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Key">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="60" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="TruckID">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="60" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestTruckLocationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Output">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ErrorCode" minOccurs="0" type="xsd:long" />
+                  <xsd:element name="ErrorText" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="GeoLocation" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Latitude" type="xsd:decimal" />
+                        <xsd:element name="Longitude" type="xsd:decimal" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="TC" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ID">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60" />
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Name" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="DateTime" minOccurs="0" type="xsd:dateTime" />
+                  <xsd:element name="EstimatedArrival" minOccurs="0" type="xsd:dateTime" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterTransportCompanyRequest">
+    <wsdl:part name="parameters" element="tns:RegisterTransportCompany" />
+  </wsdl:message>
+  <wsdl:message name="RegisterTransportCompanyResponse">
+    <wsdl:part name="result" element="tns:RegisterTransportCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstimateStagingTimeRequest">
+    <wsdl:part name="parameters" element="tns:EstimateStagingTime" />
+  </wsdl:message>
+  <wsdl:message name="EstimateStagingTimeResponse">
+    <wsdl:part name="result" element="tns:EstimateStagingTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstimateLoadingTimeRequest">
+    <wsdl:part name="parameters" element="tns:EstimateLoadingTime" />
+  </wsdl:message>
+  <wsdl:message name="EstimateLoadingTimeResponse">
+    <wsdl:part name="result" element="tns:EstimateLoadingTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssignTruckRouteRequest">
+    <wsdl:part name="parameters" element="tns:AssignTruckRoute" />
+  </wsdl:message>
+  <wsdl:message name="AssignTruckRouteResponse">
+    <wsdl:part name="result" element="tns:AssignTruckRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestTruckLocationRequest">
+    <wsdl:part name="parameters" element="tns:RequestTruckLocation" />
+  </wsdl:message>
+  <wsdl:message name="RequestTruckLocationResponse">
+    <wsdl:part name="result" element="tns:RequestTruckLocationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServicePortType">
+    <wsdl:operation name="RegisterTransportCompany">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:RegisterTransportCompanyRequest" />
+      <wsdl:output message="tns:RegisterTransportCompanyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EstimateStagingTime">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:EstimateStagingTimeRequest" />
+      <wsdl:output message="tns:EstimateStagingTimeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EstimateLoadingTime">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:EstimateLoadingTimeRequest" />
+      <wsdl:output message="tns:EstimateLoadingTimeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignTruckRoute">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:AssignTruckRouteRequest" />
+      <wsdl:output message="tns:AssignTruckRouteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestTruckLocation">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:RequestTruckLocationRequest" />
+      <wsdl:output message="tns:RequestTruckLocationResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterTransportCompany">
+      <soap:operation soapAction="https://www.controltower.com/RegisterTransportCompany" />
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimateStagingTime">
+      <soap:operation soapAction="https://www.controltower.com/EstimateStagingTime" />
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimateLoadingTime">
+      <soap:operation soapAction="https://www.controltower.com/EstimateLoadingTime" />
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignTruckRoute">
+      <soap:operation soapAction="https://www.controltower.com/AssignTruckRoute" />
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestTruckLocation">
+      <soap:operation soapAction="https://www.controltower.com/RequestTruckLocation" />
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServicePort" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:8080/ws/WebService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

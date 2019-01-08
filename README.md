@@ -4,23 +4,26 @@ This repository contains a standard communications protocol for use during the B
 
 
 # Protocol
-This protocol lists the methods supported by both Control Tower groups, including the expected input and generated output. Please refer to [protocol.jsonc](protocol.jsonc) for a descriptive implementation of this protocol.
+This protocol lists the methods supported by both Control Tower groups, including the expected input and generated output. Please refer to [WebService.wsdl](WebService.wsdl) for a WSDL implementation of all methods exposed by both Control Towers.
 
 All communication to both Control Towers mandates the use of **XML-Schema** (default for Mendix). Please refer to the [Mendix documentation of XML-Schema](https://docs.mendix.com/refguide/xml-schemas) based communication for more information.
 
 
 ## Transport Company expectations
-At some point in the business flow, the Transport Company is notified of a truck's arrival by the Control Tower. For this, the Transport Company needs to register a callback URL at the Control Tower. This happens during the initial registration of a Transport Company (```registerTransportCompany```). Once a truck has reached its destination, the URL endpoint exposing the ```notifyArrival``` method will be called.
+At some point in the business flow, the Transport Company is notified of a truck's arrival by the Control Tower. For this, the Transport Company needs to register a callback URL at the Control Tower. This happens during the initial registration of a Transport Company (```RegisterTransportCompany```). This endpoint needs to point to the ```NotifyArrival``` method **implemented through a REST service**.
 
-**It is imperative that each Transport Company implements the ```notifyArrival``` method and registers the corresponding endpoint during Transport Company registration.**
+**It is imperative that each Transport Company implements the ```NotifyArrival``` method and registers the corresponding endpoint during Transport Company registration.**
 
-The following parameters will be sent upon arrival:
+Once a truck has reached its destination, the URL endpoint exposing the ```NotifyArrival``` method will be called in combination with query parameters.
 
+Transport Companies exposing the endpoint can expect incoming requests to adhere to the following format:
 ```
-<input>
-    <timeOfArrival>1543238189</timeOfArrival>
-    <truckID>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</truckID>
-</input>
+{endpoint}?TimeOfArrival={DateTime}&TripID={UUID}
+```
+
+For example, an incoming request might look like this:
+```
+https://www.example.com/rest/notifyArrival?TimeOfArrival=2019-01-01T09:12:01&TripID=35678ec6-83bc-499e-b1aa-295a8cba9330
 ```
 
 
