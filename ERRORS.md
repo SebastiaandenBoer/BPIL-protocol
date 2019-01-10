@@ -22,6 +22,8 @@ All errors are returned as part of the ```output``` object, and are represented 
 
 **1003**: Geolocation does not exist. | Invalid location parameters.
 
+**1004**: Internal SPARQL query failed.
+
 
 ## Error codes for assignTruckRoute (1101 - 1199)
 **1101**: The truck is already en-route to its destination. Another destination could not be set.
