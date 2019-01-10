@@ -8,6 +8,9 @@ This protocol lists the methods supported by both Control Tower groups, includin
 
 All communication to both Control Towers mandates the use of **XML-Schema** (default for Mendix). Please refer to the [Mendix documentation of XML-Schema](https://docs.mendix.com/refguide/xml-schemas) based communication for more information.
 
+## Notes on ```EstimateLoadingTime``` and ```EstimateStagingTime```
+The unit for the parameters height, width, length is decimeter, whereas weight is expected in kilograms.
+
 
 ## Transport Company expectations
 At some point in the business flow, the Transport Company is notified of a truck's arrival by the Control Tower. For this, the Transport Company needs to register a callback URL at the Control Tower. This happens during the initial registration of a Transport Company (```RegisterTransportCompany```). This endpoint needs to point to the ```NotifyArrival``` method **implemented through a REST service**.
