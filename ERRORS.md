@@ -43,3 +43,5 @@ All errors are returned as part of the ```output``` object, and are represented 
 
 ## Error codes for registerTransportCompany (1501 - 1599)
 **1501**: Cannot register more than 25 trucks.
+
+**1502**: Name cannot be empty.
