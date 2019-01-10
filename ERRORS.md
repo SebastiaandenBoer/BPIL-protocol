@@ -25,25 +25,29 @@ All errors are returned as part of the ```output``` object, and are represented 
 **1004**: Internal SPARQL query failed.
 
 
-## Error codes for assignTruckRoute (1101 - 1199)
+## Error codes for AssignTruckRoute (1101 - 1199)
 **1101**: The truck is already en-route to its destination. Another destination could not be set.
 
 **1102**: Unable to calculate route.
 
 
-## Error codes for requestTruckLocation (1201 - 1299)
+## Error codes for RequestTruckLocation (1201 - 1299)
 **N/A**
 
 
-## Error codes for estimateLoadingTime (1301 - 1399)
+## Error codes for EstimateLoadingTime (1301 - 1399)
 **1301**: List of goods cannot be empty.
 
+**1302**: Calculated time exceeds maximum time constraints.
 
-## Error codes for estimateStagingTime (1401 - 1499)
+
+## Error codes for EstimateStagingTime (1401 - 1499)
 **1401**: List of goods cannot be empty.
 
+**1402**: Calculated time exceeds maximum time constraints.
 
-## Error codes for registerTransportCompany (1501 - 1599)
+
+## Error codes for RegisterTransportCompany (1501 - 1599)
 **1501**: Cannot register more than 25 trucks.
 
 **1502**: Name cannot be empty.
