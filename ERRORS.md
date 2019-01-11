@@ -40,12 +40,19 @@ All errors are returned as part of the ```output``` object, and are represented 
 
 **1302**: Calculated time exceeds maximum time constraints.
 
+**1303**: Goods exceed maximum weight of 27.500kg.
+
+**1304**: Goods exceed maximum volume of 87.43m3.
+
 
 ## Error codes for EstimateStagingTime (1401 - 1499)
 **1401**: List of goods cannot be empty.
 
 **1402**: Calculated time exceeds maximum time constraints.
 
+**1403**: Goods exceed maximum weight of 27.500kg.
+
+**1404**: Goods exceed maximum volume of 87.43m3.
 
 ## Error codes for RegisterTransportCompany (1501 - 1599)
 **1501**: Cannot register more than 25 trucks.
