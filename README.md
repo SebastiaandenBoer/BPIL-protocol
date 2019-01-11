@@ -26,7 +26,7 @@ Transport Companies exposing the endpoint can expect incoming requests to adhere
 
 For example, an incoming request might look like this:
 ```
-https://www.example.com/rest/notifyArrival?TimeOfArrival=2019-01-01T09:12:01&TripID=35678ec6-83bc-499e-b1aa-295a8cba9330
+https://www.example.com/rest/NotifyArrival?TimeOfArrival=2019-01-01T09:12:01&TripID=35678ec6-83bc-499e-b1aa-295a8cba9330
 ```
 
 
